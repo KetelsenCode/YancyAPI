@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using YancyAPI.Models;
 using YancyAPI.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace YancyAPI.Controllers
 {
@@ -17,6 +19,9 @@ namespace YancyAPI.Controllers
         {
             _context = context;
         }
-
+        public async Task<IEnumerable<Feature>> GetFeatures()
+        {
+            return await _context.Features.ToListAsync();
+        }
     }
 }

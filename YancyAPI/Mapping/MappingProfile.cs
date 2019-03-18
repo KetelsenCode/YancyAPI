@@ -15,6 +15,7 @@ namespace YancyAPI.Mapping
         {
             CreateMap<Brand, BrandResource>();
             CreateMap<Model, ModelResource>();
+            CreateMap<Feature, FeatureResource>();
         }
     }
 }

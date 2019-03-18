@@ -7,6 +7,7 @@ using YancyAPI.Models;
 
 namespace YancyAPI.Controllers.Resources
 {
+    //Resources are like a viewmodel for APIs
     public class BrandResource
     {
         public int Id { get; set; }

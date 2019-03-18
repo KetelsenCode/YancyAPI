@@ -5,10 +5,25 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20190318084217_InitialModel.cs" />
+    <Compile Remove="Migrations\20190318084217_InitialModel.Designer.cs" />
+    <Compile Remove="Migrations\20190318084638_InitialModel.cs" />
+    <Compile Remove="Migrations\20190318084638_InitialModel.Designer.cs" />
+    <Compile Remove="Migrations\20190318085351_InitialModel.cs" />
+    <Compile Remove="Migrations\20190318085351_InitialModel.Designer.cs" />
+    <Compile Remove="Migrations\20190318085544_DatabaseSeed.cs" />
+    <Compile Remove="Migrations\20190318085544_DatabaseSeed.Designer.cs" />
+    <Compile Remove="Migrations\20190318090108_InitialModels.cs" />
+    <Compile Remove="Migrations\20190318090108_InitialModels.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
 </Project>

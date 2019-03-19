@@ -16,15 +16,15 @@ namespace YancyAPI.Controllers
     [ApiController]
     public class BrandsController : ControllerBase
     {
+        public IMapper Mapper { get; }
         private readonly YancyDbContext _context;
         public BrandsController(YancyDbContext context, IMapper mapper)
         {
             _context = context;
             Mapper = mapper;
         }
-
-        public IMapper Mapper { get; }
-
+        // GET api/brands
+        [HttpGet]
         public async  Task<IEnumerable<BrandResource>> GetBrands()
         {
             var brands = await _context.Brands.

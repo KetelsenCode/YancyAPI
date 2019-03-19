@@ -7,21 +7,27 @@ using Microsoft.AspNetCore.Mvc;
 using YancyAPI.Models;
 using YancyAPI.Persistence;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using YancyAPI.Controllers.Resources;
 
 namespace YancyAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/test/[controller]")]
     [ApiController]
     public class FeaturesController : ControllerBase
     {
+        public IMapper Mapper { get; }
         private readonly YancyDbContext _context;
-        public FeaturesController(YancyDbContext context)
+        public FeaturesController(YancyDbContext context, IMapper mapper)
         {
             _context = context;
+            Mapper = mapper;
         }
-        public async Task<IEnumerable<Feature>> GetFeatures()
+        public async Task<IEnumerable<FeatureResource>> GetFeatures()
         {
-            return await _context.Features.ToListAsync();
+            var models = await _context.Features.ToListAsync();
+            return Mapper.Map<List<Feature>, List<FeatureResource>>(models);
+
         }
     }
 }

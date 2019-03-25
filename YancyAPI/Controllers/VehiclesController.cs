@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using YancyAPI.Controllers.Resources;
 using YancyAPI.Models;
 using YancyAPI.Persistence;
@@ -22,10 +23,19 @@ namespace YancyAPI.Controllers
             _context = context;
             Mapper = mapper;
         }
-        [HttpGet]
-        public string CreateVehicle()
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetVehicle(int id)
         {
-            return "Tesst1";
+            var vehicle = await _context.Vehicles //Gets all vehicles with features
+                .Include(v => v.Features)
+                .SingleOrDefaultAsync(v => v.Id == id);
+            if (vehicle == null) //If vehicle found
+            {
+                return NotFound();
+            }
+
+            var vehicleRessource = Mapper.Map<Vehicle, VehicleResource>(vehicle); 
+            return Ok(vehicleRessource);
         }
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)

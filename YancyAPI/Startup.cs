@@ -28,6 +28,7 @@ namespace YancyAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddAutoMapper();
             services.AddMvc().AddJsonOptions(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
             services.Configure<CookiePolicyOptions>(options =>
@@ -55,7 +56,7 @@ namespace YancyAPI
                 app.UseHsts();
             }
             app.UseCors(builder => builder
-                  .WithOrigins("http://127.0.0.1:8887", "http://localhost:4200")
+                  .WithOrigins("http://127.0.0.1:8887", "http://localhost:4200","*")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials()

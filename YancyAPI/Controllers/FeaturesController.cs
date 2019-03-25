@@ -12,7 +12,7 @@ using YancyAPI.Controllers.Resources;
 
 namespace YancyAPI.Controllers
 {
-    [Route("api/test/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class FeaturesController : ControllerBase
     {

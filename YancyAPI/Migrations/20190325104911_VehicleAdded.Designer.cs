@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YancyAPI.Persistence;
 
 namespace YancyAPI.Migrations
 {
     [DbContext(typeof(YancyDbContext))]
-    partial class YancyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190325104911_VehicleAdded")]
+    partial class VehicleAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,6 +70,8 @@ namespace YancyAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BrandId");
+
                     b.Property<string>("ContactMail")
                         .HasMaxLength(225);
 
@@ -83,11 +87,9 @@ namespace YancyAPI.Migrations
 
                     b.Property<DateTime>("LastUpdate");
 
-                    b.Property<int>("ModelId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ModelId");
+                    b.HasIndex("BrandId");
 
                     b.ToTable("Vehicles");
                 });
@@ -115,9 +117,9 @@ namespace YancyAPI.Migrations
 
             modelBuilder.Entity("YancyAPI.Models.Vehicle", b =>
                 {
-                    b.HasOne("YancyAPI.Models.Model", "Model")
+                    b.HasOne("YancyAPI.Models.Brand", "Brand")
                         .WithMany()
-                        .HasForeignKey("ModelId")
+                        .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

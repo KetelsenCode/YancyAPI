@@ -18,6 +18,8 @@
     <Compile Remove="Migrations\20190318090108_InitialModels.Designer.cs" />
     <Compile Remove="Migrations\20190318095637_FeaturesAdded.cs" />
     <Compile Remove="Migrations\20190318095637_FeaturesAdded.Designer.cs" />
+    <Compile Remove="Migrations\20190325104630_VehicleAdded.cs" />
+    <Compile Remove="Migrations\20190325104630_VehicleAdded.Designer.cs" />
   </ItemGroup>
 
 
